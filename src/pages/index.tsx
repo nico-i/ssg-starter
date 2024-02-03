@@ -1,12 +1,15 @@
 import { Link } from "@components/Link";
+import { SEO } from "@components/Seo";
 import { Locale } from "@helper/i18n";
+import { useSiteMeta } from "@hooks/useSiteMeta";
+import { Route } from "@types";
 import { graphql, type HeadFC, type PageProps } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import * as React from "react";
 
 const IndexPage: React.FC<PageProps> = () => {
   const { t, i18n } = useTranslation();
-  console.log(i18n);
+
   return (
     <main>
       <h1 className="text-2xl">{t("hello-world")}</h1>
@@ -38,9 +41,7 @@ export default IndexPage;
 
 export const query = graphql`
   query ($language: String!) {
-    locales: allLocale(
-      filter: { language: { eq: $language } }
-    ) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
           ns
@@ -52,4 +53,7 @@ export const query = graphql`
   }
 `;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = () => {
+  const { title, description } = useSiteMeta();
+  return <SEO title={title} description={description} route={Route.HOME} />;
+};

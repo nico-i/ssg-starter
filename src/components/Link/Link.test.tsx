@@ -1,4 +1,4 @@
-import { Link, LinkProps } from "@components/Link/Link";
+import { Link, LinkProps } from "./Link";
 import { RenderResult, render } from "@testing-library/react";
 import React from "react";
 import { beforeEach, describe, expect, it } from "vitest";

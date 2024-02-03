@@ -9,18 +9,19 @@
     "paths": {
       "@types": ["./src/types/index.ts"],
       "@helper/*": ["./src/helper/*"],
-      "@components/*": ["./src/components/*"]
+      "@hooks/*": ["./src/hooks/*"],
+      "@components/*": ["./src/components/*"],
     },
     "esModuleInterop": true,
 
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
   },
   "include": [
     "./src/**/*",
     "./gatsby-browser.ts",
     "./gatsby-config.ts",
-    "./plugins/**/*"
-  ]
+    "./plugins/**/*",
+  ],
 }

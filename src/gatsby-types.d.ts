@@ -1902,24 +1902,28 @@ type SiteSiteMetadata = {
   readonly description: Maybe<Scalars['String']>;
   readonly siteUrl: Maybe<Scalars['String']>;
   readonly title: Maybe<Scalars['String']>;
+  readonly twitterUsername: Maybe<Scalars['String']>;
 };
 
 type SiteSiteMetadataFieldSelector = {
   readonly description: InputMaybe<FieldSelectorEnum>;
   readonly siteUrl: InputMaybe<FieldSelectorEnum>;
   readonly title: InputMaybe<FieldSelectorEnum>;
+  readonly twitterUsername: InputMaybe<FieldSelectorEnum>;
 };
 
 type SiteSiteMetadataFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly siteUrl: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
+  readonly twitterUsername: InputMaybe<StringQueryOperatorInput>;
 };
 
 type SiteSiteMetadataSortInput = {
   readonly description: InputMaybe<SortOrderEnum>;
   readonly siteUrl: InputMaybe<SortOrderEnum>;
   readonly title: InputMaybe<SortOrderEnum>;
+  readonly twitterUsername: InputMaybe<SortOrderEnum>;
 };
 
 type SiteSortInput = {

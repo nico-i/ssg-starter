@@ -13,6 +13,8 @@ const { defaultLocale, Locale } = i18n;
 const locales = Object.values(Locale);
 const siteMetadata = {
   title: "ssg starter",
+  description: "A starter for static site generation with Gatsby",
+  twitterUsername: "@username",
   siteUrl: process.env.SITE_URL,
 };
 
@@ -81,7 +83,12 @@ const analyticsPlugins = [
 const config: GatsbyConfig = {
   siteMetadata,
   graphqlTypegen: true, // generates types for graphql queries
-  plugins: [...devPlugins, ...i18nPlugins, ...seoPlugins, ...analyticsPlugins],
+  plugins: [
+    ...devPlugins,
+    ...i18nPlugins,
+    ...seoPlugins,
+    ...analyticsPlugins,
+  ],
 };
 
 export default config;

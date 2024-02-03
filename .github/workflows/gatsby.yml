@@ -75,6 +75,9 @@ jobs:
             ${{ runner.os }}-gatsby-build-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      - name: Install Playwright Browsers
+        run: |
+          yarn playwright install
       - name: Build with Gatsby
         env:
           PREFIX_PATHS: "true"

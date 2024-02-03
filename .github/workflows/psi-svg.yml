@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SITE_URL: ${{ vars.SITE_URL }}
-      PSI_SVG_OUTPUT_PATH: ${{ vars.PSI_SVG_OUTPUT_PATH }}
+      PSI_SVG_OUTPUT_PATH: ${{ vars.PSI_SVG_OUTPUT_DIR }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -24,7 +24,8 @@ jobs:
 
       - name: Run PSI-SVG
         run: |
-          npx psi-svg $SITE_URL $PSI_SVG_OUTPUT_PATH --strategy=desktop
+          npx psi-svg $SITE_URL $PSI_SVG_OUTPUT_PATH/psi-desktop.svg --strategy=desktop
+          npx psi-svg $SITE_URL $PSI_SVG_OUTPUT_PATH/psi-mobile.svg --strategy=mobile
 
       - name: Upload output as artifact
         uses: actions/upload-artifact@v4

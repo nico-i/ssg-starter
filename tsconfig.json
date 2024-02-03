@@ -21,7 +21,8 @@
   "include": [
     "./src/**/*",
     "./gatsby-browser.ts",
-    "./gatsby-config.ts",
+    "gatsby-config.cjs",
     "./plugins/**/*",
+    "./.eslintrc.js",
   ],
 }

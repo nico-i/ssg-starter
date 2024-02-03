@@ -13,13 +13,13 @@ module.exports = {
           if (msgSplit.length < 3)
             return [
               false,
-              `'/spent' directive must be in new line separated by another new line`,
+              "'/spent' directive must be in new line separated by another new line",
             ]; // ensure that commit message has more than 1 line
 
           if (msgSplit[1] !== "")
             return [
               false,
-              `'/spent' directive must be separated by another new line`,
+              "'/spent' directive must be separated by another new line",
             ]; // ensure that commit message has more than 1 line
 
           const spentSplit = msgSplit[msgSplit.length - 1].split(" ");

@@ -1,9 +1,7 @@
 // - Requires -
+// - Imports -
 require("@dotenvx/dotenvx").config();
 const i18n = require("./src/helper/i18n/i18n");
-
-// - Imports -
-import type { GatsbyConfig } from "gatsby";
 
 // - Variables -
 if (process.env.SITE_URL === undefined) {
@@ -22,28 +20,31 @@ const siteMetadata = {
 const devPlugins = ["gatsby-plugin-tsconfig-paths", "gatsby-plugin-postcss"];
 const i18nPlugins = [
   {
-    resolve: `gatsby-source-filesystem`,
+    resolve: "gatsby-source-filesystem",
     options: {
       path: `${__dirname}/locales`,
-      name: `locale`,
+      name: "locale",
     },
   },
   {
     // Enable i18n support
-    resolve: "gatsby-plugin-react-i18next", // https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/
+    // https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/
+    resolve: "gatsby-plugin-react-i18next",
     options: {
       languages: locales,
       defaultLanguage: defaultLocale,
       siteUrl: siteMetadata.siteUrl,
       redirect: true,
-      // generateDefaultLanguagePage: true, // Only generates a page for the default language but does not redirect
+      // Only generates a page for the default language but does not redirect
+      // generateDefaultLanguagePage: true,
       i18nextOptions: {
         // debug: true,
         fallbackLng: defaultLocale,
         supportedLngs: locales,
         defaultNS: "common",
         interpolation: {
-          escapeValue: false, // not needed for react as it escapes by default
+          // not needed for react as it escapes by default
+          escapeValue: false,
         },
         keySeparator: ".",
         nsSeparator: ":",
@@ -56,7 +57,8 @@ const seoPlugins = [
   "gatsby-plugin-robots-txt",
   {
     // Generate favicons and icons for the site
-    resolve: "gatsby-plugin-manifest", // https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/
+    // https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/
+    resolve: "gatsby-plugin-manifest",
     options: {
       // TODO: Update this to match your site
       // name: "ssg starter",
@@ -72,7 +74,8 @@ const seoPlugins = [
 const analyticsPlugins = [
   {
     // Configures integration with Google Analytics
-    resolve: "gatsby-plugin-google-gtag", // https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag/
+    // https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag/
+    resolve: "gatsby-plugin-google-gtag",
     options: {
       trackingIds: ["G-XXXXXXXXXX"], // TODO: Update this with your tracking ID
     },
@@ -80,15 +83,12 @@ const analyticsPlugins = [
 ];
 
 // - Config -
-const config: GatsbyConfig = {
+const config = {
   siteMetadata,
+  // TODO: Update / disable this if you are using a custom domain
+  pathPrefix: "/ssg-starter",
   graphqlTypegen: true, // generates types for graphql queries
-  plugins: [
-    ...devPlugins,
-    ...i18nPlugins,
-    ...seoPlugins,
-    ...analyticsPlugins,
-  ],
+  plugins: [...devPlugins, ...i18nPlugins, ...seoPlugins, ...analyticsPlugins],
 };
 
 export default config;

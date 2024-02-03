@@ -6,14 +6,14 @@ export interface ButtonProps extends ComponentProps {
   onClick: () => void;
 }
 
-export const Button = ({
+export function Button({
   children,
   onClick,
   dataTestId,
-}: Readonly<ButtonProps>) => {
+}: Readonly<ButtonProps>) {
   return (
     <button onClick={onClick} data-testid={dataTestId}>
       {children}
     </button>
   );
-};
+}

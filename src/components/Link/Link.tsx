@@ -9,12 +9,12 @@ export interface LinkProps extends ComponentProps {
   children: React.ReactNode;
 }
 
-export const Link = ({
+export function Link({
   to,
   children,
   dataTestId,
   locale,
-}: Readonly<LinkProps>) => {
+}: Readonly<LinkProps>) {
   return (
     <I18nLink
       placeholder={undefined}
@@ -25,4 +25,4 @@ export const Link = ({
       {children}
     </I18nLink>
   );
-};
+}

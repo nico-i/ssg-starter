@@ -1,7 +1,7 @@
-import { Link, LinkProps } from "./Link";
 import { RenderResult, render } from "@testing-library/react";
 import React from "react";
 import { beforeEach, describe, expect, it } from "vitest";
+import { Link, LinkProps } from "./Link";
 
 describe(Link.name, () => {
   const dataTestId = "test";

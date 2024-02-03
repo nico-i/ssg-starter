@@ -11,17 +11,17 @@ export interface SEOProps {
   children?: React.ReactNode;
 }
 
-export const SEO = ({
+export function SEO({
   title,
   description,
   route,
   slug,
   children,
-}: Readonly<SEOProps>) => {
+}: Readonly<SEOProps>) {
   const { siteUrl, twitterUsername } = useSiteMeta();
   const { i18n } = useTranslation();
   const url = new URL(
-    `${siteUrl}${route ? `/${route}` : ``}${slug ? `/${slug}` : ``}`,
+    `${siteUrl}${route ? `/${route}` : ""}${slug ? `/${slug}` : ""}`,
   );
 
   const routeAsFileName = (
@@ -29,7 +29,7 @@ export const SEO = ({
   )?.replace(/\//g, "-");
 
   const ogImageUrl = new URL(
-    `${siteUrl}/og-images/${routeAsFileName}${slug || ``}.jpeg`,
+    `${siteUrl}/og-images/${routeAsFileName}${slug || ""}.jpeg`,
   );
 
   return (
@@ -52,4 +52,4 @@ export const SEO = ({
       {children}
     </>
   );
-};
+}

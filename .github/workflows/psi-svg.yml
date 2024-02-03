@@ -24,7 +24,7 @@ jobs:
 
       - name: Run PSI-SVG
         run: |
-          mkdir -p ${PSI_SVG_OUTPUT_DIR}
+          mkdir -p $PSI_SVG_OUTPUT_DIR
           npx psi-svg $SITE_URL $PSI_SVG_OUTPUT_DIR/psi-desktop.svg --strategy=desktop
           npx psi-svg $SITE_URL $PSI_SVG_OUTPUT_DIR/psi-mobile.svg --strategy=mobile
 

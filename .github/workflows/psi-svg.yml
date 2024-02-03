@@ -24,11 +24,12 @@ jobs:
 
       - name: Run PSI-SVG
         run: |
-          npx psi-svg $SITE_URL $PSI_SVG_OUTPUT_PATH/psi-desktop.svg --strategy=desktop
-          npx psi-svg $SITE_URL $PSI_SVG_OUTPUT_PATH/psi-mobile.svg --strategy=mobile
+          mkdir -p ${PSI_SVG_OUTPUT_DIR}
+          npx psi-svg $SITE_URL $PSI_SVG_OUTPUT_DIR/psi-desktop.svg --strategy=desktop
+          npx psi-svg $SITE_URL $PSI_SVG_OUTPUT_DIR/psi-mobile.svg --strategy=mobile
 
-      - name: Upload output as artifact
+      - name: Upload output SVGs as artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: psi-svg-output
-          path: ${{ env.PSI_SVG_OUTPUT_PATH }}
+          name: psi-svg
+          path: ${{ vars.PSI_SVG_OUTPUT_DIR }}

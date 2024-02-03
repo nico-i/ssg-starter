@@ -83,12 +83,8 @@ const analyticsPlugins = [
 const config: GatsbyConfig = {
   siteMetadata,
   graphqlTypegen: true, // generates types for graphql queries
-  plugins: [
-    ...devPlugins,
-    ...i18nPlugins,
-    ...seoPlugins,
-    ...analyticsPlugins,
-  ],
+  pathPrefix: "/ssg-starter", // TODO: Update this to match your site
+  plugins: [...devPlugins, ...i18nPlugins, ...seoPlugins, ...analyticsPlugins],
 };
 
 export default config;

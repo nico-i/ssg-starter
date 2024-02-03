@@ -41,6 +41,7 @@ jobs:
           path: |
             node_modules
             .cache
+            public
             ~/.cache/ms-playwright
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
@@ -54,10 +55,9 @@ jobs:
           PREFIX_PATHS: "true"
           SITE_URL: ${{ vars.SITE_URL }}
         run: yarn build
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: public-folder
           path: ./public
 
   test:
@@ -77,13 +77,9 @@ jobs:
           path: |
             node_modules
             .cache
+            public
             ~/.cache/ms-playwright
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: public-folder
-          path: ./public
       - name: Run Playwright Tests
         env:
           SITE_URL: ${{ vars.SITE_URL }}

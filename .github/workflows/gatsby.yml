@@ -40,6 +40,7 @@ jobs:
         with:
           path: |
             node_modules
+            .cache
             ~/.cache/ms-playwright
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
@@ -75,6 +76,7 @@ jobs:
         with:
           path: |
             node_modules
+            .cache
             ~/.cache/ms-playwright
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
       - name: Download build artifact

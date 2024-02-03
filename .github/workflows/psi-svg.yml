@@ -27,7 +27,7 @@ jobs:
           npx psi-svg $SITE_URL $PSI_SVG_OUTPUT_PATH --strategy=desktop
 
       - name: Upload output as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: psi-svg-output
           path: ${{ env.PSI_SVG_OUTPUT_PATH }}

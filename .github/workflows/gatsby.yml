@@ -85,6 +85,8 @@ jobs:
           name: public-folder
           path: ./public
       - name: Run Playwright Tests
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
         run: yarn test:ci
       - name: Upload Coverage Artifact
         uses: actions/upload-artifact@v4

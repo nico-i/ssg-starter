@@ -1,15 +1,15 @@
-const { chromium } = require("playwright");
-const path = require("path");
-const fs = require("fs");
+const { chromium } = require(`playwright`);
+const path = require(`path`);
+const fs = require(`fs`);
 
 // TODO: Replace this with a custom template
-const exampleTemplate = require("../src/templates/OG/example.js");
+const exampleTemplate = require(`../src/templates/OG/example.js`);
 
 /**
  * This post build script is used to generate OG images for blog posts and other pages.
  * Based off of https://github.com/PostHog/posthog.com/blob/138a67505cc806e12d3500969b96e00b741ce338/gatsby/onPostBuild.js
  */
-module.exports = exports.onPostBuild = async ({ graphql }) => {
+module.exports = exports.onPostBuild = async () => {
   // TODO: Fetch data from your graphql endpoint
   //   const { data } = await graphql(`
   //     query {
@@ -17,7 +17,7 @@ module.exports = exports.onPostBuild = async ({ graphql }) => {
   //   `);
 
   // Create the og-images directory in the output folder if it doesn't exist
-  const dir = path.resolve(__dirname, "../public/og-images");
+  const dir = path.resolve(__dirname, `../public/og-images`);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir);
 
   // TODO: Fetch and save a font to the assets folder
@@ -41,7 +41,7 @@ module.exports = exports.onPostBuild = async ({ graphql }) => {
   //   });
 
   const browser = await chromium.launch({
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    args: [`--no-sandbox`, `--disable-setuid-sandbox`],
     headless: true,
   });
 
@@ -52,14 +52,14 @@ module.exports = exports.onPostBuild = async ({ graphql }) => {
   });
   async function createOG({ html, slug }) {
     await page.setContent(html, {
-      waitUntil: "domcontentloaded",
+      waitUntil: `domcontentloaded`,
     });
 
-    await page.evaluateHandle("document.fonts.ready");
+    await page.evaluateHandle(`document.fonts.ready`);
 
     await page.screenshot({
-      type: "jpeg",
-      path: `${dir}/${slug.replace(/\//g, "")}.jpeg`,
+      type: `jpeg`,
+      path: `${dir}/${slug.replace(/\//g, ``)}.jpeg`,
       quality: 75,
     });
   }
@@ -72,11 +72,11 @@ module.exports = exports.onPostBuild = async ({ graphql }) => {
 
   await createOG({
     html: exampleTemplate({
-      title: "Example OG Image",
-      description: "This is an example blog post.",
-      image: "",
+      title: `Example OG Image`,
+      description: `This is an example blog post.`,
+      image: ``,
     }),
-    slug: "/example",
+    slug: `/example`,
   });
 
   // Repeat this process for all pages that need OG images

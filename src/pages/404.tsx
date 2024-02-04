@@ -7,8 +7,12 @@ const NotFoundPage: React.FC<PageProps> = () => {
     <main>
       <h1>Page not found</h1>
       <p>
-        Sorry, we couldn't find what you were looking for. Maybe you can find
-        what you need from our <Link to="/" placeholder={undefined}>homepage</Link>.
+        Sorry, we couldn&apos;t find what you were looking for. Maybe you can
+        find what you need from our&bsp;
+        <Link to="/" placeholder={undefined}>
+          homepage
+        </Link>
+        .
       </p>
     </main>
   );

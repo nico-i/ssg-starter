@@ -12,14 +12,14 @@ const IndexPage: React.FC<PageProps> = () => {
 
   return (
     <main>
-      <h1 className="text-2xl">{t("hello-world")}</h1>
+      <h1 className="text-2xl">{t(`hello-world`)}</h1>
       <div className="flex gap-4">
         {Object.values(Locale).map((locale) => {
           if (locale === i18n.language) {
             return null;
           }
           const lngName = new Intl.DisplayNames([locale], {
-            type: "language",
+            type: `language`,
           });
           return (
             <Link

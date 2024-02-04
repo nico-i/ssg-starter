@@ -12,7 +12,7 @@ vi.mock(`gatsby`, async () => {
       React.createElement(`a`, {
         ...rest,
         href: to,
-      })
+      }),
     ),
     StaticQuery: vi.fn(),
     useStaticQuery: vi.fn(),

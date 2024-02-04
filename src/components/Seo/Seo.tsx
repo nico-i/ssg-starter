@@ -25,8 +25,8 @@ export const SEO = ({
   );
 
   const routeAsFileName = (
-    route?.startsWith("/") ? route.slice(1) : route
-  )?.replace(/\//g, "-");
+    route?.startsWith(`/`) ? route.slice(1) : route
+  )?.replace(/\//g, `-`);
 
   const ogImageUrl = new URL(
     `${siteUrl}/og-images/${routeAsFileName}${slug || ``}.jpeg`,

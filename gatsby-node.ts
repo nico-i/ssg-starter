@@ -1,1 +1,1 @@
-exports.onPostBuild = require("./gatsby/onPostBuild");
+exports.onPostBuild = require(`./gatsby/onPostBuild`);

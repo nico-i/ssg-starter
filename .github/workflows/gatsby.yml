@@ -104,28 +104,14 @@ jobs:
   analyze:
     needs: deploy
     runs-on: ubuntu-latest
-    env:
-      SITE_URL: ${{ vars.SITE_URL }}
-      PSI_STRAT: ${{ vars.PSI_STRAT }}
-      PSI_DIR: ${{ vars.PSI_DIR }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Run PSI-SVG
+      - name: Trigger Analysis Workflow
+        env:
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.WEBHOOK_PAT }}
         run: |
-          mkdir -p $PSI_DIR
-          npx psi-svg $SITE_URL $PSI_DIR/psi.svg --strategy=$PSI_STRAT
-
-      - name: Commit and push analysis svg
-        run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
-          git add $PSI_DIR/psi.svg
-          git commit -m "chore(deployment): update page speed insights svg [skip ci]"
-          git push
+          curl \
+            -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${PERSONAL_ACCESS_TOKEN}" \
+            https://api.github.com/repos/${{ github.repository }}/dispatches \
+            -d '{"event_type": "analyze-site-event"}'

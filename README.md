@@ -6,6 +6,20 @@ Furthermore, an effort was made to facilitate the generation of time tracking re
 
 All that's necessary to get started is to configure a data source and implement the desired design.
 
+## Features
+
+### Automatic PageSpeed Insights
+
+The repository is configured to automatically run a PageSpeed Insights audit using the [psi-svg](https://www.npmjs.com/package/psi-svg) package.
+
+After a successful deployment of this website to gh-pages via the [configured workflow](./.github/workflows//gatsby.yml) , the `analyze` job of action generates the `psi.svg`. It displays the current PageSpeed Insights scores. The SVG is uploaded to the output directory configured by the [`PSI_DIR`](https://github.com/nico-i/ssg-starter/settings/variables/actions) environment variable.
+
+This is the `psi.svg` of the latest deployment of this starter:
+
+<br />
+
+![PageSpeed Insights](./docs/svg/psi.svg)
+
 ## SSG Framework
 
 My main criteria for selecting a static site generator (from here on referred to as IT) are:
@@ -63,16 +77,3 @@ The reasons for this decision are:
 - [npm trends: Astro vs Gatsby](https://npmtrends.com/astro-vs-gatsby)
   - Astro seems to be gaining traction and Gatsby seems to slowly be losing some of its popularity.
 
-## Features
-
-### Automatic PageSpeed Insights
-
-The repository is configured to automatically run a PageSpeed Insights audit using the [psi-svg](https://www.npmjs.com/package/psi-svg) package.
-
-After a successful deployment of this website to gh-pages via the [configured workflow](./.github/workflows//gatsby.yml) , the `analyze` job of action generates the `psi.svg`. It displays the current PageSpeed Insights scores. The SVG is uploaded to the output directory configured by the [`PSI_DIR`](https://github.com/nico-i/ssg-starter/settings/variables/actions) environment variable.
-
-This is the `psi.svg` of the latest deployment of this starter:
-
-<br />
-
-![PageSpeed Insights](./docs/svg/psi.svg)

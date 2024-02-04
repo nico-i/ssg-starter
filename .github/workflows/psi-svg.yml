@@ -1,0 +1,34 @@
+name: Analyze Site Performance and Generate SVG
+
+on:
+  repository_dispatch:
+    types: [analyze-site-event]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: ${{ vars.SITE_URL }}
+      PSI_STRAT: ${{ vars.PSI_STRAT }}
+      PSI_DIR: ${{ vars.PSI_DIR }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run PSI-SVG
+        run: |
+          mkdir -p $PSI_DIR
+          npx psi-svg $SITE_URL $PSI_DIR/psi.svg --strategy=$PSI_STRAT
+
+      - name: Commit and push analysis svg
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add $PSI_DIR/psi.svg
+          git commit -m "chore(deployment): update page speed insights svg [skip ci]"
+          git push

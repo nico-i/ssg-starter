@@ -115,7 +115,7 @@ jobs:
 
       - name: Run PSI-SVG
         run: |
-          npx psi-svg psi.svg --strategy=$PSI_STRAT
+          npx psi-svg $SITE_URL psi.svg --strategy=$PSI_STRAT
 
       - name: Upload PSI SVG
         uses: actions/upload-artifact@v4

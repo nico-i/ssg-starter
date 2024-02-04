@@ -5226,6 +5226,11 @@ commander@^7.2.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
   integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
 
+commitlint-plugin-spend@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/commitlint-plugin-spend/-/commitlint-plugin-spend-1.0.1.tgz#8dc8a0cfb48a923a584cc64d86e03d651e544417"
+  integrity sha512-YIz6WSQQVqyGWPLSB3m5LuVlNuEDYkK50bafAufCYw7UmONDN1T4z8oqGLMIpKbCMyBf3NORjLI3HD1tJunqAw==
+
 common-path-prefix@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/common-path-prefix/-/common-path-prefix-3.0.0.tgz#7d007a7e07c58c4b4d5f433131a19141b29f11e0"

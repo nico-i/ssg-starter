@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SITE_URL: ${{ vars.SITE_URL }}
-      PSI_SVG_OUTPUT_PATH: ${{ vars.PSI_SVG_OUTPUT_DIR }}
+      PSI_SVG_OUTPUT_DIR: ${{ vars.PSI_SVG_OUTPUT_DIR }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -20,7 +20,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 21
+          node-version: 20
 
       - name: Run PSI-SVG
         run: |

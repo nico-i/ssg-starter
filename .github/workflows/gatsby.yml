@@ -87,6 +87,7 @@ jobs:
       - name: Upload Coverage Artifact
         uses: actions/upload-artifact@v4
         with:
+          name: coverage
           path: ./coverage
 
   deploy:
@@ -105,7 +106,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SITE_URL: ${{ vars.SITE_URL }}
-      PSI_SVG_OUTPUT_DIR: ${{ vars.PSI_SVG_OUTPUT_DIR }}
+      PSI_STRAT: ${{ vars.PSI_STRAT }}
     steps:
       - name: Install Node.js
         uses: actions/setup-node@v4
@@ -114,18 +115,10 @@ jobs:
 
       - name: Run PSI-SVG
         run: |
-          mkdir -p $PSI_SVG_OUTPUT_DIR
-          npx psi-svg $SITE_URL $PSI_SVG_OUTPUT_DIR/psi-desktop.svg --strategy=desktop
-          npx psi-svg $SITE_URL $PSI_SVG_OUTPUT_DIR/psi-mobile.svg --strategy=mobile
+          npx psi-svg psi.svg --strategy=$PSI_STRAT
 
-      - name: Upload mobile PSI SVG
+      - name: Upload PSI SVG
         uses: actions/upload-artifact@v4
         with:
-          name: psi-mobile
-          path: $PSI_SVG_OUTPUT_DIR/psi-mobile.svg
-
-      - name: Upload desktop PSI SVG
-        uses: actions/upload-artifact@v4
-        with:
-          name: psi-desktop
-          path: $PSI_SVG_OUTPUT_DIR/psi-desktop.svg
+          name: psi-svg
+          path: ./psi.svg

@@ -3,6 +3,7 @@ name: Analyze Site Performance and Generate SVG
 on:
   repository_dispatch:
     types: [analyze-site-event]
+  workflow_dispatch:
 
 jobs:
   analyze:
